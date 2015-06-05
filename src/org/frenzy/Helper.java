@@ -11,10 +11,10 @@ import org.frenzy.impl.Qa;
  */
 public class Helper {
 
-    static Department business;
-    static Department analytics;
-    static Department dev;
-    static Department qa;
+    public static Department business;
+    public static Department analytics;
+    public static Department dev;
+    public static Department qa;
 
     public static void createObjects () {
         Department business = new Business();

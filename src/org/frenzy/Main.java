@@ -16,19 +16,20 @@ public class Main {
         Helper.initialisation();
 
         System.out.println("Choose volume of new task");
-        volume = Integer.parseInt(scan.next());
+        input = scan.next();
+        volume = Integer.parseInt(input);
 
         System.out.println("Choose department for new task by small first letter");
         input = scan.next();
 
         switch (input) {
-            case "a": analytics.setTasksInProcess(volume);
+            case "a": Helper.analytics.setTasksInProcess(volume);
                 break;
-            case "b": business.setTasksInProcess(volume);
+            case "b": Helper.business.setTasksInProcess(volume);
                 break;
-            case "d": dev.setTasksInProcess(volume);
+            case "d": Helper.dev.setTasksInProcess(volume);
                 break;
-            case "q": qa.setTasksInProcess(volume);
+            case "q": Helper.qa.setTasksInProcess(volume);
                 break;
             default: System.out.println("Wrong letter");
                 break;
