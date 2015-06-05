@@ -17,10 +17,10 @@ public class Helper {
     public static Department qa;
 
     public static void createObjects () {
-        Department business = new Business();
-        Department analytics = new Analytics();
-        Department dev = new Dev();
-        Department qa = new Qa();
+        business = new Business();
+        analytics = new Analytics();
+        dev = new Dev();
+        qa = new Qa();
     }
 
     public static void initialisation () {
