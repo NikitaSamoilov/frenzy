@@ -33,7 +33,7 @@ public class Helper {
         setHappinessAllFalse();
         setFreedomAllTrue();
 
-        System.out.println("Set quantity of business-users");
+        /*System.out.println("Set quantity of business-users");
         quan = Integer.parseInt(scanner.next());
         business.setUnits(quan);
 
@@ -47,7 +47,7 @@ public class Helper {
 
         System.out.println("Set quantity of qa engineers");
         quan = Integer.parseInt(scanner.next());
-        qa.setUnits(quan);
+        qa.setUnits(quan);*/
     }
 
     private static void setHappinessAllFalse () {
@@ -71,9 +71,9 @@ public class Helper {
 
     private static void processWithDep (Department dep, int tasks) {
         int tasksOld = dep.getTasksInProcess();
-        dep.setTasksInProcess(tasksOld - tasks);
         if (tasksOld < tasks)
             tasks = tasksOld;
+        dep.setTasksInProcess(tasksOld - tasks);
         if ((tasksOld-tasks) == 0)
             dep.setBusyness(true);
         if (dep == business)                        //Некрасиво, но что поделать...
@@ -98,7 +98,7 @@ public class Helper {
         System.out.println("Testers has " + qa.getTasksInProcess() + " tasks");
     }
 
-    private static ArrayList<Department>  setVolumeOfArray () {
+    private static ArrayList<Department>  setVolumeOfArray (Department business, Department analytics, Department dev, Department qa) {
         ArrayList<Department> array = new ArrayList<Department>();
         if (!(business.getBusyness()))
             array.add(business);
@@ -115,15 +115,16 @@ public class Helper {
         ArrayList<Department> array;
 
         while (!(business.getBusyness()) || !(analytics.getBusyness()) || !(dev.getBusyness()) || !(qa.getBusyness())) {
+            output();
             array = null;
             int tasks;
 
-            array = setVolumeOfArray();
+            array = setVolumeOfArray(business, analytics, dev, qa);
 
             for (int i = 0; i < array.size(); i++) {
                 tasks = getTasksFinished();
+                //System.out.println(array.get(i).getName() + " has " + array.get(i).getTasksInProcess() + " tasks");
                 processWithDep(array.get(i), tasks);
-                System.out.println(array.get(i).getName() + " has " + array.get(i).getTasksInProcess() + " tasks");
             }
 
             /*tasks = getTasksFinished();
@@ -148,8 +149,7 @@ public class Helper {
             if (!(qa.getBusyness())) {
                 processWithDep(qa, tasks);
             }
-
-            output();*/
+*/
         }
     }
 }

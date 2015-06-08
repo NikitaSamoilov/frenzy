@@ -13,7 +13,7 @@ public class Main {
         int volume;
 
         Helper.createObjects();
-        //Helper.initialisation();
+        Helper.initialisation();
 
         System.out.println("Choose quantity of new tasks");
         input = scan.next();
