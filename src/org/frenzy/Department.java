@@ -6,8 +6,11 @@ package org.frenzy;
 public abstract class Department {
     protected boolean isHappy;
     protected boolean isFree;
-    protected int quantityOfTasksInProcess; // Measured in man-hour
+    protected int quantityOfTasksInProcess; //Number of tasks
     protected int quantityOfUnits;
+    protected Department nextDep;
+
+    protected String name = "Name";
 
     public void setHappiness (boolean isDepartmentHappy) {
 

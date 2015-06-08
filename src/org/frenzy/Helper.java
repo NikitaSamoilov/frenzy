@@ -1,6 +1,8 @@
 package org.frenzy;
 
-import java.lang.Integer;import java.lang.String;import java.lang.System;import java.util.Scanner;
+import java.lang.Integer;import java.lang.String;import java.lang.System;
+import java.util.ArrayList;
+import java.util.Scanner;
 import org.frenzy.impl.Analytics;
 import org.frenzy.impl.Business;
 import org.frenzy.impl.Dev;
@@ -60,5 +62,93 @@ public class Helper {
         analytics.setBusyness(true);
         dev.setBusyness(true);
         qa.setBusyness(true);
+    }
+
+    private static int getTasksFinished () {
+        int tasks  = (int)(Math.random()*5);
+        return tasks;
+    }
+
+    private static void processWithDep (Department dep, int tasks) {
+        int tasksOld = dep.getTasksInProcess();
+        dep.setTasksInProcess(tasksOld - tasks);
+        if (tasksOld < tasks)
+            tasks = tasksOld;
+        if ((tasksOld-tasks) == 0)
+            dep.setBusyness(true);
+        if (dep == business)                        //Некрасиво, но что поделать...
+            processWithNextDep(analytics, tasks);
+        if (dep == analytics)
+            processWithNextDep(dev, tasks);
+        if (dep == dev)
+            processWithNextDep(qa, tasks);
+
+    }
+
+    private static void processWithNextDep (Department dep, int tasks) {
+        int tasksOld = dep.getTasksInProcess();
+        dep.setTasksInProcess(tasksOld + tasks);
+        dep.setBusyness(false);
+    }
+
+    private static void output () {
+        System.out.println("Business has " + business.getTasksInProcess() + " tasks");
+        System.out.println("Analytics has " + analytics.getTasksInProcess() + " tasks");
+        System.out.println("Developers has " + dev.getTasksInProcess() + " tasks");
+        System.out.println("Testers has " + qa.getTasksInProcess() + " tasks");
+    }
+
+    private static ArrayList<Department>  setVolumeOfArray () {
+        ArrayList<Department> array = new ArrayList<Department>();
+        if (!(business.getBusyness()))
+            array.add(business);
+        if (!(analytics.getBusyness()))
+            array.add(analytics);
+        if (!(dev.getBusyness()))
+            array.add(dev);
+        if (!(qa.getBusyness()))
+            array.add(qa);
+        return array;
+    }
+
+    public static void start() {
+
+        while (!(business.getBusyness()) || !(analytics.getBusyness()) || !(dev.getBusyness()) || !(qa.getBusyness())) {
+            ArrayList<Department> array;
+            int tasks;
+
+            array = setVolumeOfArray();
+
+            for (int i = 0; i < array.size(); i++) {
+                tasks = getTasksFinished();
+                processWithDep(array.get(i), tasks);
+                System.out.println(array.get(i).name + " has " + array.get(i).getTasksInProcess() + " tasks");
+            }
+
+            /*tasks = getTasksFinished();
+            if (!(business.getBusyness())) {
+                processWithDep(business, tasks);
+                processWithNextDep(analytics, tasks);
+            }
+
+            tasks = getTasksFinished();
+            if (!(analytics.getBusyness())) {
+                processWithDep(analytics, tasks);
+                processWithNextDep(dev, tasks);
+            }
+
+            tasks = getTasksFinished();
+            if (!(dev.getBusyness())) {
+                processWithDep(dev, tasks);
+                processWithNextDep(qa, tasks);
+            }
+
+            tasks = getTasksFinished();
+            if (!(qa.getBusyness())) {
+                processWithDep(qa, tasks);
+            }
+
+            output();*/
+        }
     }
 }

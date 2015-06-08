@@ -8,6 +8,8 @@ import org.frenzy.Department;
 
 public class Analytics extends Department {
 
+    public String name = "Analytics";
+
     @Override
     public int countDaysToFinish () {
         int days = (quantityOfTasksInProcess/quantityOfUnits)/4;

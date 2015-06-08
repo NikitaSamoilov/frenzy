@@ -9,6 +9,8 @@ import org.frenzy.Department;
 
 public class Dev extends Department {
 
+    public String name = "Developers";
+
     @Override
     public int countDaysToFinish () {
         int days = (quantityOfTasksInProcess/quantityOfUnits)/2;

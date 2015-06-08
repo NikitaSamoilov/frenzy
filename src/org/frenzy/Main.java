@@ -15,7 +15,7 @@ public class Main {
         Helper.createObjects();
         Helper.initialisation();
 
-        System.out.println("Choose volume of new task");
+        System.out.println("Choose quantity of new tasks");
         input = scan.next();
         volume = Integer.parseInt(input);
 
@@ -23,18 +23,27 @@ public class Main {
         input = scan.next();
 
         switch (input) {
-            case "a": Helper.analytics.setTasksInProcess(volume);
+            case "a":
+                Helper.analytics.setTasksInProcess(volume);
+                Helper.analytics.setBusyness(false);
                 break;
-            case "b": Helper.business.setTasksInProcess(volume);
+            case "b":
+                Helper.business.setTasksInProcess(volume);
+                Helper.business.setBusyness(false);
                 break;
-            case "d": Helper.dev.setTasksInProcess(volume);
+            case "d":
+                Helper.dev.setTasksInProcess(volume);
+                Helper.dev.setBusyness(false);
                 break;
-            case "q": Helper.qa.setTasksInProcess(volume);
+            case "q":
+                Helper.qa.setTasksInProcess(volume);
+                Helper.qa.setBusyness(false);
                 break;
-            default: System.out.println("Wrong letter");
+            default:
+                System.out.println("Wrong letter");
                 break;
         }
 
-
+        Helper.start();
     }
 }

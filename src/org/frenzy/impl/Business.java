@@ -7,6 +7,8 @@ import org.frenzy.Department;
  */
 public class Business extends Department{
 
+    public String name = "Business";
+
     @Override
     public int countDaysToFinish () {
         int days = (quantityOfTasksInProcess/quantityOfUnits)/8;
