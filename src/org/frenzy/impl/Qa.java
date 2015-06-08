@@ -8,7 +8,9 @@ import org.frenzy.Department;
 
 public class Qa extends Department {
 
-    public String name = "Testers";
+    public Qa() {
+        name = "Testers";
+    }
 
     @Override
     public int countDaysToFinish () {

@@ -65,7 +65,7 @@ public class Helper {
     }
 
     private static int getTasksFinished () {
-        int tasks  = (int)(Math.random()*5);
+        int tasks  = (int)(Math.random()*4+1);
         return tasks;
     }
 
@@ -112,9 +112,10 @@ public class Helper {
     }
 
     public static void start() {
+        ArrayList<Department> array;
 
         while (!(business.getBusyness()) || !(analytics.getBusyness()) || !(dev.getBusyness()) || !(qa.getBusyness())) {
-            ArrayList<Department> array;
+            array = null;
             int tasks;
 
             array = setVolumeOfArray();
@@ -122,7 +123,7 @@ public class Helper {
             for (int i = 0; i < array.size(); i++) {
                 tasks = getTasksFinished();
                 processWithDep(array.get(i), tasks);
-                System.out.println(array.get(i).name + " has " + array.get(i).getTasksInProcess() + " tasks");
+                System.out.println(array.get(i).getName() + " has " + array.get(i).getTasksInProcess() + " tasks");
             }
 
             /*tasks = getTasksFinished();

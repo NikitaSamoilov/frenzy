@@ -9,7 +9,9 @@ import org.frenzy.Department;
 
 public class Dev extends Department {
 
-    public String name = "Developers";
+    public Dev() {
+        name = "Developers";
+    }
 
     @Override
     public int countDaysToFinish () {

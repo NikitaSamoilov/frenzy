@@ -8,7 +8,9 @@ import org.frenzy.Department;
 
 public class Analytics extends Department {
 
-    public String name = "Analytics";
+    public Analytics () {
+        name = "Analysts";
+    }
 
     @Override
     public int countDaysToFinish () {

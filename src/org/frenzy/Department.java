@@ -22,6 +22,10 @@ public abstract class Department {
         return isHappy;
     }
 
+    public String getName () {
+        return name;
+    }
+
     public void setBusyness (boolean isDepartmentFree) {
 
         isFree = isDepartmentFree;
