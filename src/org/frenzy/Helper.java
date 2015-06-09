@@ -116,7 +116,7 @@ public class Helper {
     }
 
     public static float getFlow() {
-        float flow = quantityOfIncomingTasks/quantityOfIterations;
+        float flow = (float) quantityOfIncomingTasks/quantityOfIterations;
         return flow;
     }
 
