@@ -18,6 +18,7 @@ public class Main {
         System.out.println("Choose quantity of new tasks");
         input = scan.next();
         volume = Integer.parseInt(input);
+        Helper.quantityOfIncomingTasks = volume;
 
         System.out.println("Choose department for new task by small first letter");
         input = scan.next();
@@ -45,5 +46,17 @@ public class Main {
         }
 
         Helper.start();
+
+        System.out.println("Would you like to see common flow? (y/n)");
+        input = scan.next();
+
+        switch (input) {
+            case "y":
+                System.out.println(Helper.getFlow());
+                break;
+            default:
+                break;
+        }
+
     }
 }

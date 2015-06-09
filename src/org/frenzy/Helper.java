@@ -18,6 +18,9 @@ public class Helper {
     public static Department dev;
     public static Department qa;
 
+    public static int quantityOfIncomingTasks;
+    public static int quantityOfIterations;
+
     public static void createObjects () {
         business = new Business();
         analytics = new Analytics();
@@ -96,6 +99,7 @@ public class Helper {
         System.out.println("Analytics has " + analytics.getTasksInProcess() + " tasks");
         System.out.println("Developers has " + dev.getTasksInProcess() + " tasks");
         System.out.println("Testers has " + qa.getTasksInProcess() + " tasks");
+        System.out.println("Quantity of iterations " + quantityOfIterations);
     }
 
     private static ArrayList<Department>  setVolumeOfArray (Department business, Department analytics, Department dev, Department qa) {
@@ -111,10 +115,19 @@ public class Helper {
         return array;
     }
 
+    public static float getFlow() {
+        float flow = quantityOfIncomingTasks/quantityOfIterations;
+        return flow;
+    }
+
     public static void start() {
         ArrayList<Department> array;
+        quantityOfIterations = 0;
 
         while (!(business.getBusyness()) || !(analytics.getBusyness()) || !(dev.getBusyness()) || !(qa.getBusyness())) {
+
+            quantityOfIterations++;
+
             output();
             array = null;
             int tasks;
