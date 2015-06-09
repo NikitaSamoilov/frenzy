@@ -156,7 +156,7 @@ public class Helper {
         if ((tasksOld-tasks) == 0)
             dep.setBusyness(true);
         //TODO: fix it
-        if (dep == business)                        //Эта дрянь ломает все, если отделом меньше, чем 4
+        if (dep == business)                        //Эта дрянь ломает все, если отделов меньше, чем 4
             processWithNextDep(analytics, tasks);
         if (dep == analytics)
             processWithNextDep(dev, tasks);
