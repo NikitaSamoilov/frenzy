@@ -22,8 +22,17 @@ public class Helper {
 
     public static int quantityOfIncomingTasks;
     public static int quantityOfIterations;
+    private static int volume;
 
     private static ArrayList<Department> arrayOfDepartments = new ArrayList<Department>();
+
+    public static int getVolume () {
+        return volume;
+    }
+
+    public static void setVolume (int vol) {
+        volume = vol;
+    }
 
     public static void createObjects (char[] newChArray) {
         for (int i = 0; i < newChArray.length; i++) {
@@ -156,11 +165,11 @@ public class Helper {
         if ((tasksOld-tasks) == 0)
             dep.setBusyness(true);
         //TODO: fix it
-        if (dep == business)                        //Эта дрянь ломает все, если отделов меньше, чем 4
+        if ((dep == business) && (arrayOfDepartments.contains(analytics)))                         //Эта дрянь ломает все, если отделов меньше, чем 4
             processWithNextDep(analytics, tasks);
-        if (dep == analytics)
+        if ((dep == analytics) && (arrayOfDepartments.contains(dev)))
             processWithNextDep(dev, tasks);
-        if (dep == dev)
+        if ((dep == dev) && (arrayOfDepartments.contains(qa)))
             processWithNextDep(qa, tasks);
 
     }
@@ -254,40 +263,37 @@ public class Helper {
 
         System.out.println("Choose quantity of new tasks");
         input = scan.next();
-        Main.volume = Integer.parseInt(input);
-        quantityOfIncomingTasks = Main.volume;
+        setVolume(Integer.parseInt(input));
+        quantityOfIncomingTasks = getVolume();
 
         System.out.println("Choose department for new task by small first letter");
         input = scan.next();
 
+        Department dep = getDepartmentForTasks(input);
+        initDepInWork(dep);
+
+    }
+
+    private static Department getDepartmentForTasks (String input) {
         switch (input) {
             case "a":
-                if (arrayOfDepartments.contains(analytics)) {
-                    analytics.setTasksInProcess(Main.volume);
-                    analytics.setBusyness(false);
-                } else System.out.println("You cannot choose analytics");
-                break;
+                return analytics;
             case "b":
-                if (arrayOfDepartments.contains(business)) {
-                    business.setTasksInProcess(Main.volume);
-                    business.setBusyness(false);
-                } else System.out.println("You cannot choose business");
-                break;
+                return business;
             case "d":
-                if (arrayOfDepartments.contains(dev)) {
-                    dev.setTasksInProcess(Main.volume);
-                    dev.setBusyness(false);
-                } else System.out.println("You cannot choose developers");
-                break;
+                return dev;
             case "q":
-                if (arrayOfDepartments.contains(qa)) {
-                    qa.setTasksInProcess(Main.volume);
-                    qa.setBusyness(false);
-                } else System.out.println("You cannot choose qa");
-                break;
+                return qa;
             default:
-                System.out.println("Wrong letter");
-                break;
+                System.out.print("Wrong letter");
+                return null;
         }
+    }
+
+    private static void initDepInWork (Department dep) {
+        if (arrayOfDepartments.contains(dep)) {
+            dep.setTasksInProcess(getVolume());
+            dep.setBusyness(false);
+        } else System.out.println("You cannot choose " + dep.name);
     }
 }

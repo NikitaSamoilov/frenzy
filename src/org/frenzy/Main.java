@@ -4,8 +4,6 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static int volume;
-
     public static void main(String[] args) {
 
         Scanner scan = new Scanner(System.in);
