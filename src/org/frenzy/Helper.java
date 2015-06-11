@@ -164,8 +164,7 @@ public class Helper {
         dep.setTasksInProcess(tasksOld - tasks);
         if ((tasksOld-tasks) == 0)
             dep.setBusyness(true);
-        //TODO: fix it
-        if ((dep == business) && (arrayOfDepartments.contains(analytics)))                         //Эта дрянь ломает все, если отделов меньше, чем 4
+        if ((dep == business) && (arrayOfDepartments.contains(analytics)))  //Некрасиво...
             processWithNextDep(analytics, tasks);
         if ((dep == analytics) && (arrayOfDepartments.contains(dev)))
             processWithNextDep(dev, tasks);
@@ -182,7 +181,8 @@ public class Helper {
 
     private static void output () {
         for (int i = 0; i < arrayOfDepartments.size(); i++) {
-            System.out.println(arrayOfDepartments.get(i).name + " has " + arrayOfDepartments.get(i).getTasksInProcess() + " tasks");
+            Department dep = arrayOfDepartments.get(i);
+            System.out.println(dep.name + " has " + dep.getTasksInProcess() + " tasks");
         }
 
         System.out.println("Quantity of iterations " + quantityOfIterations);
