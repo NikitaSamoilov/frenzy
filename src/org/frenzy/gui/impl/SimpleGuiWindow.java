@@ -35,7 +35,7 @@ public class SimpleGuiWindow extends GuiWindow {
 
     protected ManufactureDisplayer buildManufactureDisplayer() {
         ManufactureDisplayer displayer = new ManufactureDrawPanel();
-        manufactureDisplayer.setManufacture(manufacture);
+        displayer.setManufacture(manufacture);
         displayer.setBounds(10, 50, 200, 200);
         return displayer;
     }
