@@ -3,7 +3,7 @@ package org.frenzy;
 /**
  * Created by artem.grechishnikov on 02.06.2015.
  */
-public abstract class Department {
+public class Department {
     protected boolean isHappy;
     protected boolean isFree;
     protected int quantityOfTasksInProcess; //Number of tasks
@@ -26,12 +26,12 @@ public abstract class Department {
         return name;
     }
 
-    public void setBusyness (boolean isDepartmentFree) {
+    public void setBusiness(boolean isDepartmentFree) {
 
         isFree = isDepartmentFree;
     }
 
-    public boolean getBusyness () {
+    public boolean getBusiness() {
 
         return isFree;
     }
@@ -56,5 +56,7 @@ public abstract class Department {
         return quantityOfUnits;
     }
 
-    public abstract int countDaysToFinish ();
+    public int countDaysToFinish() {
+        return 1;
+    };
 }
