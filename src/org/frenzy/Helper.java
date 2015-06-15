@@ -4,21 +4,13 @@ import java.lang.Integer;import java.lang.String;import java.lang.System;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import com.sun.deploy.util.StringUtils;
-import org.frenzy.impl.Analytics;
-import org.frenzy.impl.Business;
-import org.frenzy.impl.Dev;
-import org.frenzy.impl.Qa;
 
 /**
  * Created by artem.grechishnikov on 03.06.2015.
  */
+@Deprecated
 public class Helper {
 
-    public static Department business;
-    public static Department analytics;
-    public static Department dev;
-    public static Department qa;
 
     public static int quantityOfIncomingTasks;
     public static int quantityOfIterations;
@@ -35,39 +27,39 @@ public class Helper {
     }
 
     public static void createObjects (char[] newChArray) {
-        for (int i = 0; i < newChArray.length; i++) {
-            switch (newChArray[i]) {
-                case ('a'):
-                    analytics = new Analytics();
-                    arrayOfDepartments.add(analytics);
-                    break;
-                case ('b'):
-                    business = new Business();
-                    arrayOfDepartments.add(business);
-                    break;
-                case ('d'):
-                    dev = new Dev();
-                    arrayOfDepartments.add(dev);
-                    break;
-                case ('q'):
-                    qa = new Qa();
-                    arrayOfDepartments.add(qa);
-                    break;
-                default:
-                    break;
-            }
-        }
+//        for (int i = 0; i < newChArray.length; i++) {
+//            switch (newChArray[i]) {
+//                case ('a'):
+//                    analytics = new Analytics();
+//                    arrayOfDepartments.add(analytics);
+//                    break;
+//                case ('b'):
+//                    business = new Business();
+//                    arrayOfDepartments.add(business);
+//                    break;
+//                case ('d'):
+//                    dev = new Dev();
+//                    arrayOfDepartments.add(dev);
+//                    break;
+//                case ('q'):
+//                    qa = new Qa();
+//                    arrayOfDepartments.add(qa);
+//                    break;
+//                default:
+//                    break;
+//            }
+//        }
     }
 
     public static void createObjects () {
-        business = new Business();
-        arrayOfDepartments.add(business);
-        analytics = new Analytics();
-        arrayOfDepartments.add(analytics);
-        dev = new Dev();
-        arrayOfDepartments.add(dev);
-        qa = new Qa();
-        arrayOfDepartments.add(qa);
+//        business = new Business();
+//        arrayOfDepartments.add(business);
+//        analytics = new Analytics();
+//        arrayOfDepartments.add(analytics);
+//        dev = new Dev();
+//        arrayOfDepartments.add(dev);
+//        qa = new Qa();
+//        arrayOfDepartments.add(qa);
     }
 
     public static void initialisation (String deprt) {
@@ -134,22 +126,22 @@ public class Helper {
 
     private static void setFreedomAllTrue (ArrayList<Department> arrayOfDepartments) {
         for (int i = 0; i < arrayOfDepartments.size(); i++) {
-            arrayOfDepartments.get(i).setBusyness(true);
+            arrayOfDepartments.get(i).setBusiness(true);
         }
     }
 
     private static void setHappinessAllFalse () {
-        business.setHappiness(false);
-        analytics.setHappiness(false);
-        dev.setHappiness(false);
-        qa.setHappiness(false);
+//        business.setHappiness(false);
+//        analytics.setHappiness(false);
+//        dev.setHappiness(false);
+//        qa.setHappiness(false);
     }
 
     private static void setFreedomAllTrue () {
-        business.setBusyness(true);
-        analytics.setBusyness(true);
-        dev.setBusyness(true);
-        qa.setBusyness(true);
+//        business.setBusiness(true);
+//        analytics.setBusiness(true);
+//        dev.setBusiness(true);
+//        qa.setBusiness(true);
     }
 
     private static int getTasksFinished () {
@@ -158,25 +150,25 @@ public class Helper {
     }
 
     private static void processWithDep (Department dep, int tasks) {
-        int tasksOld = dep.getTasksInProcess();
-        if (tasksOld < tasks)
-            tasks = tasksOld;
-        dep.setTasksInProcess(tasksOld - tasks);
-        if ((tasksOld-tasks) == 0)
-            dep.setBusyness(true);
-        if ((dep == business) && (arrayOfDepartments.contains(analytics)))  //Некрасиво...
-            processWithNextDep(analytics, tasks);
-        if ((dep == analytics) && (arrayOfDepartments.contains(dev)))
-            processWithNextDep(dev, tasks);
-        if ((dep == dev) && (arrayOfDepartments.contains(qa)))
-            processWithNextDep(qa, tasks);
+//        int tasksOld = dep.getTasksInProcess();
+//        if (tasksOld < tasks)
+//            tasks = tasksOld;
+//        dep.setTasksInProcess(tasksOld - tasks);
+//        if ((tasksOld-tasks) == 0)
+//            dep.setBusiness(true);
+//        if ((dep == business) && (arrayOfDepartments.contains(analytics)))  //Некрасиво...
+//            processWithNextDep(analytics, tasks);
+//        if ((dep == analytics) && (arrayOfDepartments.contains(dev)))
+//            processWithNextDep(dev, tasks);
+//        if ((dep == dev) && (arrayOfDepartments.contains(qa)))
+//            processWithNextDep(qa, tasks);
 
     }
 
     private static void processWithNextDep (Department dep, int tasks) {
         int tasksOld = dep.getTasksInProcess();
         dep.setTasksInProcess(tasksOld + tasks);
-        dep.setBusyness(false);
+        dep.setBusiness(false);
     }
 
     private static void output () {
@@ -191,7 +183,7 @@ public class Helper {
     private static ArrayList<Department>  setVolumeOfArray (ArrayList<Department> arrayOfDepartments) {
         ArrayList<Department> array = new ArrayList<Department>();
         for (int i = 0; i < arrayOfDepartments.size(); i++) {
-            if (!(arrayOfDepartments.get(i).getBusyness()))
+            if (!(arrayOfDepartments.get(i).getBusiness()))
                 array.add(arrayOfDepartments.get(i));
         }
 
@@ -206,7 +198,7 @@ public class Helper {
     public static boolean checkBusyness () {
         boolean busyness = true;
         for (int i = 0; i < arrayOfDepartments.size(); i++) {
-            if (!(arrayOfDepartments.get(i).getBusyness()))
+            if (!(arrayOfDepartments.get(i).getBusiness()))
                 busyness = false;
         }
         return busyness;
@@ -232,25 +224,25 @@ public class Helper {
             }
 
             /*tasks = getTasksFinished();
-            if (!(business.getBusyness())) {
+            if (!(business.getBusiness())) {
                 processWithDep(business, tasks);
                 processWithNextDep(analytics, tasks);
             }
 
             tasks = getTasksFinished();
-            if (!(analytics.getBusyness())) {
+            if (!(analytics.getBusiness())) {
                 processWithDep(analytics, tasks);
                 processWithNextDep(dev, tasks);
             }
 
             tasks = getTasksFinished();
-            if (!(dev.getBusyness())) {
+            if (!(dev.getBusiness())) {
                 processWithDep(dev, tasks);
                 processWithNextDep(qa, tasks);
             }
 
             tasks = getTasksFinished();
-            if (!(qa.getBusyness())) {
+            if (!(qa.getBusiness())) {
                 processWithDep(qa, tasks);
             }
 */
@@ -275,25 +267,26 @@ public class Helper {
     }
 
     private static Department getDepartmentForTasks (String input) {
-        switch (input) {
-            case "a":
-                return analytics;
-            case "b":
-                return business;
-            case "d":
-                return dev;
-            case "q":
-                return qa;
-            default:
-                System.out.print("Wrong letter");
-                return null;
-        }
+//        switch (input) {
+//            case "a":
+//                return analytics;
+//            case "b":
+//                return business;
+//            case "d":
+//                return dev;
+//            case "q":
+//                return qa;
+//            default:
+//                System.out.print("Wrong letter");
+//                return null;
+//        }
+        return null;
     }
 
     private static void initDepInWork (Department dep) {
         if (arrayOfDepartments.contains(dep)) {
             dep.setTasksInProcess(getVolume());
-            dep.setBusyness(false);
+            dep.setBusiness(false);
         } else System.out.println("You cannot choose " + dep.name);
     }
 }
