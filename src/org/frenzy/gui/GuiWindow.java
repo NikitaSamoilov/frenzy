@@ -27,6 +27,7 @@ public abstract class GuiWindow extends JFrame {
     protected void initMainWindow(int width, int height) {
         setSize(width, height);
         getContentPane().setLayout(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     protected abstract void buildAndAttachElements();
