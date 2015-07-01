@@ -5,6 +5,7 @@ import org.frenzy.gui.ManufactureDisplayer;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class ManufactureDrawPanel extends JPanel implements ManufactureDisplayer {
 
@@ -38,19 +39,31 @@ public class ManufactureDrawPanel extends JPanel implements ManufactureDisplayer
         //TODO: draw code
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2.setColor(Color.BLUE);
-        //g2.drawOval(20, 20, 100, 60);
 
-        drawDepartments(g, g2);
+        for (int i = 0; i < manufacture.getDepartmentsCount(); i++) {
+            drawDepartments(g2, i);
+        }
     }
 
-    protected void drawDepartments(Graphics g, Graphics2D g2) {
+    protected void drawDepartments(Graphics2D g2, int i) {
+        ArrayList<Integer> coordinates = chooseDepartmentCoordinates(i);
+        g2.fillOval(coordinates.get(0), coordinates.get(1), coordinates.get(2), coordinates.get(3));
+    }
+
+    protected ArrayList<Integer> chooseDepartmentCoordinates(int i) {
+        ArrayList<Integer> coordinates = new ArrayList<Integer>();
         int startVer, startHor, width, heigth;
 
         startVer = getHeight()/2;
-        startHor = 10;
         width = (getWidth() - 20 - manufacture.getDepartmentsCount()*10)/manufacture.getDepartmentsCount();
+        startHor = 10 + width*i + 10*i;
         heigth = (getHeight() - 20)/2;
 
-        g2.fillOval(startVer, startHor, width, heigth);
+        coordinates.add(startHor);
+        coordinates.add(startVer);
+        coordinates.add(width);
+        coordinates.add(heigth);
+
+        return coordinates;
     }
 }
