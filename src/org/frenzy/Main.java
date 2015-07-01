@@ -12,7 +12,9 @@ public class Main {
     private static final int WINDOW_HEIGHT = 400;
 
     public static void main(String[] args) {
-        GuiWindowParams params = new GuiWindowParams(WINDOW_WIDTH, WINDOW_HEIGHT, new Manufacture());
+        Manufacture manufacture = new Manufacture();
+        manufacture.addDepartment(new Department());
+        GuiWindowParams params = new GuiWindowParams(WINDOW_WIDTH, WINDOW_HEIGHT, manufacture);
         GuiWindow guiWindow = GuiWindow.buildWindow(GuiWindowType.SIMPLE, params);
         guiWindow.setVisible(true);
     }
