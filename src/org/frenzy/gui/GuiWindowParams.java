@@ -38,7 +38,7 @@ public class GuiWindowParams {
 
     public GuiWindowParams(int width, int height) {
         setHeight(height);
-        setHeight(width);
+        setWidth(width);
     }
 
     public  GuiWindowParams(int width, int height, Manufacture manufacture) {
