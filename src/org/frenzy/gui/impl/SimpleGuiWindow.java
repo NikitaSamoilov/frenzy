@@ -12,6 +12,7 @@ public class SimpleGuiWindow extends GuiWindow {
 
     private ManufactureDisplayer manufactureDisplayer;
     private JButton nextButton;
+    private JButton addDepartmentButton;
 
     public SimpleGuiWindow(GuiWindowParams params) {
         super(params);
@@ -26,6 +27,10 @@ public class SimpleGuiWindow extends GuiWindow {
         nextButton = buildNextButton();
         add(nextButton);
         nextButton.addActionListener(new NextButtonListener(manufactureDisplayer));
+
+        addDepartmentButton = buildAddDepartmentButton();
+        add(addDepartmentButton);
+        addDepartmentButton.addActionListener(null);
     }
 
     protected JButton buildNextButton() {
@@ -33,6 +38,13 @@ public class SimpleGuiWindow extends GuiWindow {
         nextButton.setBounds(10, 10, 80, 30);
 
         return nextButton;
+    }
+
+    protected JButton buildAddDepartmentButton() {
+        JButton addDepartmentButton = new JButton("Add department");
+        addDepartmentButton.setBounds(100, 10, 160, 30);
+
+        return addDepartmentButton;
     }
 
     protected ManufactureDisplayer buildManufactureDisplayer() {
