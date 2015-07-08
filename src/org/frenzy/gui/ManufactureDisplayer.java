@@ -1,6 +1,6 @@
 package org.frenzy.gui;
 
-import org.frenzy.Manufacture;
+import org.frenzy.core.Manufacture;
 
 import java.awt.*;
 

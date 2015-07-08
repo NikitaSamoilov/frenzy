@@ -1,10 +1,10 @@
 package org.frenzy;
 
+import org.frenzy.core.Department;
+import org.frenzy.core.Manufacture;
 import org.frenzy.gui.GuiWindow;
 import org.frenzy.gui.GuiWindowParams;
 import org.frenzy.gui.GuiWindowType;
-
-import java.util.Scanner;
 
 public class Main {
 

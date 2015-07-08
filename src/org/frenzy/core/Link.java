@@ -1,4 +1,4 @@
-package org.frenzy;
+package org.frenzy.core;
 
 /**
  * Created by artem.grechishnikov on 02.06.2015.

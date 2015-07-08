@@ -1,4 +1,4 @@
-package org.frenzy;
+package org.frenzy.core;
 
 import java.util.ArrayList;
 import java.util.List;

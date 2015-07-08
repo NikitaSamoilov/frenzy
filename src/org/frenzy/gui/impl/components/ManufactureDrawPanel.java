@@ -1,6 +1,6 @@
 package org.frenzy.gui.impl.components;
 
-import org.frenzy.Manufacture;
+import org.frenzy.core.Manufacture;
 import org.frenzy.gui.ManufactureDisplayer;
 
 import javax.swing.*;

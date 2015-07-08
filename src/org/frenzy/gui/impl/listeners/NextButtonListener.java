@@ -1,6 +1,5 @@
 package org.frenzy.gui.impl.listeners;
 
-import org.frenzy.Manufacture;
 import org.frenzy.gui.ManufactureDisplayer;
 
 import java.awt.event.ActionEvent;

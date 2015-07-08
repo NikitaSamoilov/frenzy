@@ -1,4 +1,4 @@
-package org.frenzy;
+package org.frenzy.core;
 
 
 public class Department {
