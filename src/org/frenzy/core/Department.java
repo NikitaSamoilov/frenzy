@@ -3,6 +3,7 @@ package org.frenzy.core;
 
 public class Department {
     private String name;
+    private Strategy strategy;
 
     public String getName() {
         return name;

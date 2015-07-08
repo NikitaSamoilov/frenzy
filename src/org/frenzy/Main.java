@@ -14,7 +14,6 @@ public class Main {
     public static void main(String[] args) {
         Manufacture manufacture = new Manufacture();
         manufacture.addDepartment(new Department("Test Department"));
-        manufacture.addDepartment(new Department("Test Department2"));
         GuiWindowParams params = new GuiWindowParams(WINDOW_WIDTH, WINDOW_HEIGHT, manufacture);
         GuiWindow guiWindow = GuiWindow.buildWindow(GuiWindowType.SIMPLE, params);
         guiWindow.setVisible(true);
