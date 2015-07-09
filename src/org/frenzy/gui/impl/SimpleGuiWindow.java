@@ -27,22 +27,15 @@ public class SimpleGuiWindow extends GuiWindow {
 
         nextButton = buildNextButton();
         add(nextButton);
-        nextButton.addActionListener(new NextButtonListener(manufactureDisplayer));
 
         addDepartmentButton = buildAddDepartmentButton();
         add(addDepartmentButton);
-        AddDepartmentButtonListener listener = new AddDepartmentButtonListener(manufacture) {
-            @Override
-            public void processPostEffect() {
-                manufactureDisplayer.update();
-            }
-        };
-        addDepartmentButton.addActionListener(listener);
     }
 
     protected JButton buildNextButton() {
         JButton nextButton = new JButton("Next");
         nextButton.setBounds(10, 10, 80, 30);
+        nextButton.addActionListener(new NextButtonListener(manufactureDisplayer));
 
         return nextButton;
     }
@@ -50,6 +43,13 @@ public class SimpleGuiWindow extends GuiWindow {
     protected JButton buildAddDepartmentButton() {
         JButton addDepartmentButton = new JButton("Add department");
         addDepartmentButton.setBounds(100, 10, 160, 30);
+        AddDepartmentButtonListener listener = new AddDepartmentButtonListener(manufacture) {
+            @Override
+            public void processPostEffect() {
+                manufactureDisplayer.update();
+            }
+        };
+        addDepartmentButton.addActionListener(listener);
 
         return addDepartmentButton;
     }
