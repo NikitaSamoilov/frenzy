@@ -6,4 +6,5 @@ import org.frenzy.core.Manufacture;
 
 public interface ManufactureController {
     void addDepartment(Manufacture manufacture, Department department);
+    Department buildDefaultDepartment();
 }

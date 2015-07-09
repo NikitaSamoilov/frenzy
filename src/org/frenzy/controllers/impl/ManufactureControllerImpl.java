@@ -16,4 +16,10 @@ public class ManufactureControllerImpl implements ManufactureController {
         }
         manufacture.addDepartment(department);
     }
+
+    @Override
+    public Department buildDefaultDepartment() {
+        Department departmet = new Department("Default");
+        return departmet;
+    }
 }

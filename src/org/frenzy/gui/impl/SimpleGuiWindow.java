@@ -4,6 +4,7 @@ import org.frenzy.gui.GuiWindow;
 import org.frenzy.gui.GuiWindowParams;
 import org.frenzy.gui.ManufactureDisplayer;
 import org.frenzy.gui.impl.components.ManufactureDrawPanel;
+import org.frenzy.gui.impl.listeners.AddDepartmentButtonListener;
 import org.frenzy.gui.impl.listeners.NextButtonListener;
 
 import javax.swing.*;
@@ -30,7 +31,13 @@ public class SimpleGuiWindow extends GuiWindow {
 
         addDepartmentButton = buildAddDepartmentButton();
         add(addDepartmentButton);
-        addDepartmentButton.addActionListener(null);
+        AddDepartmentButtonListener listener = new AddDepartmentButtonListener(manufacture) {
+            @Override
+            public void processPostEffect() {
+                manufactureDisplayer.update();
+            }
+        };
+        addDepartmentButton.addActionListener(listener);
     }
 
     protected JButton buildNextButton() {
