@@ -6,8 +6,8 @@ import org.frenzy.core.impl.SimpleStrategy;
 public class Department {
     private String name;
     private Strategy strategy;
-    private int countOfTasksInProcess;
-    private int countOfTasksForNextDepartment;
+    private int quantityOfTasksInProcess;
+    private int quantityOfTasksForNextDepartment;
 
     public String getName() {
         return name;
@@ -17,20 +17,20 @@ public class Department {
         this.name = name;
     }
 
-    public void setCountOfTasksInProcess (int countOfTasks) {
-        this.countOfTasksInProcess = countOfTasks;
+    public void setQuantityOfTasksInProcess(int quantityOfTasks) {
+        this.quantityOfTasksInProcess = quantityOfTasks;
     }
 
-    public int getCountOfTasksInProcess () {
-        return countOfTasksInProcess;
+    public int getQuantityOfTasksInProcess() {
+        return quantityOfTasksInProcess;
     }
 
-    public void setCountOfTasksForNextDepartment (int countOftasks) {
-        this.countOfTasksForNextDepartment = countOftasks;
+    public void setQuantityOfTasksForNextDepartment(int quantityOfTasks) {
+        this.quantityOfTasksForNextDepartment = quantityOfTasks;
     }
 
-    public int getCountOfTasksForNextDepartment () {
-        return countOfTasksForNextDepartment;
+    public int getQuantityOfTasksForNextDepartment() {
+        return quantityOfTasksForNextDepartment;
     }
 
     public Department() {
@@ -39,6 +39,6 @@ public class Department {
 
     public Department(String name) {
         this.name = name;
-        Strategy strategy = new SimpleStrategy();
+        this.strategy = new SimpleStrategy();
     }
 }

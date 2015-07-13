@@ -5,4 +5,5 @@ package org.frenzy.core;
  */
 public abstract class Strategy {
 
+    public abstract void performTasksInProcess (Department dep);
 }
