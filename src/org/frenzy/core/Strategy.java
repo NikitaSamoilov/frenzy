@@ -5,5 +5,17 @@ package org.frenzy.core;
  */
 public abstract class Strategy {
 
-    public abstract void performTasksInProcess (Department dep);
+    public void performTasksInProcess (Department dep) {
+        int quantityOfIncomingTasks = dep.getQuantityOfTasksInProcess();
+        int quantityOfTasksForNextDepartment = dep.getQuantityOfTasksForNextDepartment();
+        int finishedTasks = getFinishedTasks(quantityOfIncomingTasks);
+
+        quantityOfIncomingTasks -= finishedTasks;
+        quantityOfTasksForNextDepartment += finishedTasks;
+
+        dep.setQuantityOfTasksInProcess(quantityOfIncomingTasks);
+        dep.setQuantityOfTasksForNextDepartment(quantityOfTasksForNextDepartment);
+    }
+
+    protected abstract int getFinishedTasks(int quantityOfIncomingTasks);
 }
