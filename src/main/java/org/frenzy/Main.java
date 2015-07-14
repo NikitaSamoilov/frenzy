@@ -2,6 +2,7 @@ package org.frenzy;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.frenzy.core.Context;
 import org.frenzy.core.Department;
 import org.frenzy.core.Manufacture;
 import org.frenzy.gui.GuiWindow;
@@ -17,9 +18,13 @@ public class Main {
     private static final int WINDOW_HEIGHT = 400;
 
     private static ApplicationContext applicationContext;
+    private static Context context;
 
     public static void main(String[] args) {
         initApplicationContext();
+        context = new Context();
+        context.add(ApplicationContext.class, applicationContext);
+
         Manufacture manufacture = new Manufacture();
         manufacture.addDepartment(new Department("Test Department"));
         GuiWindowParams params = new GuiWindowParams(WINDOW_WIDTH, WINDOW_HEIGHT, manufacture);
